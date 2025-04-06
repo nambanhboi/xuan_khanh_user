@@ -24,7 +24,7 @@ const MainLayout: React.FC<{
     <Layout className="header-component">
       <Spin spinning={loading}>
         <HeaderLayout setLoading={setLoading}/>
-        <Content style={{ padding: "0 48px" }}>
+        <Content style={{ padding: "0" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>
             {breadcrumb.map((item) => {
               return <Breadcrumb.Item>{item}</Breadcrumb.Item>;
