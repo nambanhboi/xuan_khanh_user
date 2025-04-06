@@ -1,0 +1,50 @@
+.ds-san-pham{
+    .Splitter-left{
+        padding: 24px;
+        .Splitter-left-content{
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+    }
+
+    .Splitter-right{
+        padding: 24px;
+        .Splitter-right-content{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+    }
+    .ant-card{
+        cursor: pointer;
+        .ant-card-body{
+            padding: 8px 5px; 
+        }
+        .ant-card-actions:hover{
+            background-color: var(--color-primary-3);
+            .cart-icon{
+                color: var(--color-primary-9) !important;
+            }
+        }
+    }
+    
+    .mo-ta-san-pham{
+        display: flex;
+        flex-direction: column;
+        // align-items: center ;
+        .ten-san-pham{
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .gia-san-pham{
+            font-size: 16px;
+            color: #999999;
+        }
+    }
+
+    .Title{
+        margin: 0 0 10px 0;
+    }
+}

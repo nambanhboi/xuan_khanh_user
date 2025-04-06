@@ -1,0 +1,31 @@
+.btn-custom-default{
+    border: 1px solid var(--color-primary-6);
+    color: white;
+    background-color: var(--color-primary-6);
+}
+
+.btn-custom-default:hover{
+    border: 1px solid var(--color-primary-9) !important;
+    color: white;
+    background-color: var(--color-primary-9) !important;
+}
+
+.ant-btn-variant-outlined{
+    border: 1px solid var(--color-primary-6);
+    color: var(--color-primary-6);
+    
+}
+.ant-btn-variant-outlined:hover{
+    border: 1px solid var(--color-primary-8) !important;
+    color: var(--color-primary-8) !important;
+    background-color: rgb(235, 235, 235) !important;
+}
+
+.btn-custom-delete{
+    border: 1px solid rgba(255, 29, 29, 0.747) ;
+    color: rgba(255, 29, 29, 0.747);
+}
+.btn-custom-delete:hover{
+    border: 1px solid rgb(197, 0, 0) !important;
+    color: rgb(197, 0, 0) !important;
+}

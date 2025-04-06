@@ -1,0 +1,35 @@
+.chi-tiet-san-pham{
+    .Splitter-ct{
+
+        .Splitter-ct-left{
+            padding: 10px;
+        }
+        .Splitter-ct-right{
+            padding: 10px;
+        }
+    }
+
+    .thong-tin-san-pham{
+        display: flex;
+        flex-direction: column;
+        gap:8px;
+
+        .ten-san-pham{
+            font-size: 35px;
+            font-weight: bold;
+            
+        }
+        .ten-danh-muc{
+            color: rgb(131, 131, 131);
+            font-size: 20px;
+        }
+    }
+
+    .gia-san-pham{
+        font-size: 25px;
+    }
+    .gia-khuyen-mai{
+        color: rgba(131, 131, 131, 0.582);
+        font-size: 20px;
+    }
+}

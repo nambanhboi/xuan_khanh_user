@@ -1,0 +1,72 @@
+.table-custom {
+
+    .table-custom-style {
+        background-color: #fff;
+
+        .ant-table {
+            border: 1px solid var(--border-color) !important;
+        }
+    }
+
+    .action-table {
+        display: flex;
+        justify-content: space-around;
+
+        .action-table-edit {
+            background-color: #e1fcff;
+            padding: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .action-table-edit:hover {
+            background-color: #d4f6fa;
+        }
+
+        .action-table-edit:active {
+            background-color: #b8f5fc;
+        }
+
+        .action-table-delete {
+            background-color: #ffe1e1;
+            padding: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .action-table-delete:hover {
+            background-color: #fad4d4;
+        }
+
+        .action-table-delete:active {
+            background-color: #fcb8b8;
+        }
+
+        .action-table-1 {
+            background-color: #e1fff1;
+            padding: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .action-table-1:hover {
+            background-color: rgb(212, 250, 244);
+        }
+
+        .action-table-1:active {
+            background-color: #b8fcc7;
+        }
+    }
+
+    .operation-button {
+        margin-bottom: 8px;
+        float: inline-end;
+    }
+    
+}
+
+.modal-footer-custom {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+}

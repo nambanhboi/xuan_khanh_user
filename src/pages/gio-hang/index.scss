@@ -1,0 +1,26 @@
+.gio-hang-chi-tiet {
+    // width: 70%;
+    // margin-left: 15%;
+    // border-left: 1px solid rgba(204, 203, 203, 0.842);
+    // border-right: 1px solid rgba(204, 203, 203, 0.842);
+    .btn-delete {
+        background-color: #ffd7d7;
+        border: 1px solid rgb(255, 85, 85);
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: rgb(255, 85, 85);
+    }
+    .btn-delete:hover {
+        background-color: #faa2a2;
+        border: 1px solid rgb(255, 85, 85);
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: white;
+    }
+    .gio-hang-phai{
+        display: flex;
+        gap: 8px;
+    }
+}

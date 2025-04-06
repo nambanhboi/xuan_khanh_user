@@ -1,0 +1,38 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 600px) {
+      @content
+    }
+  }
+  @if $breakpoint == tab-port {
+    @media (max-width: 900px) {
+      @content
+    }; //900px
+  }
+  @if $breakpoint == tab-land {
+    @media (max-width: 1200px) {
+      @content
+    }; //1200px
+  }
+
+  @if $breakpoint == desktop {
+    @media (min-width: 996px) {
+      @content
+    }; //1800px
+  }
+
+  @if $breakpoint == big-desktop {
+    @media (min-width: 1800px) {
+      @content
+    }; //1800px
+  }
+  @if $breakpoint == scale-screen {
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.25),
+    only screen and (-o-min-device-pixel-ratio: 5/4),
+    only screen and (min-resolution: 120dpi),
+    only screen and (min-resolution: 1.25dppx) {
+      @content
+    }
+    // screen scale > 100%
+  }
+}

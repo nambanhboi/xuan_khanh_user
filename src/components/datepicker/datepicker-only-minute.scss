@@ -1,0 +1,16 @@
+:where(.css-dev-only-do-not-override-1dzk20h).ant-picker-dropdown .ant-picker-time-panel-column {
+    display: flex !important;
+    flex-flow: column wrap !important;
+  }
+  
+  :where(.css-dev-only-do-not-override-1dzk20h).ant-picker-dropdown .ant-picker-time-panel-column {
+    flex: 1 0 auto !important;
+    width: 120px !important;
+  }
+  :where(.css-dev-only-do-not-override-1dzk20h).ant-picker-dropdown .ant-picker-time-panel-column >li.ant-picker-time-panel-cell .ant-picker-time-panel-cell-inner {
+    width: 30px !important;
+    padding-inline-start: 7px !important;
+  }
+  .ant-picker-dropdown-range ul[data-type=second] {
+    display: none !important;
+  }

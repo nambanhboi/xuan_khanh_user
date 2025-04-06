@@ -1,0 +1,16 @@
+.order-tracking-page {
+    padding: 40px 20px;
+    margin: 0 auto;
+  }
+  
+  .order-tracking-page h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .order-tracking-page {
+      padding: 20px 10px;
+    }
+  }
