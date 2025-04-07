@@ -48,7 +48,7 @@ export const router = createBrowserRouter([
   {
     path: routesConfig.trangChu,
     element: (
-      <MainLayout breadcrumb = {["Trang chủ"]}>
+      <MainLayout >
         <TrangChu />
       </MainLayout>
     )

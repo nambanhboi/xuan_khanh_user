@@ -2,6 +2,7 @@ import {
   Avatar,
   Button,
   Dropdown,
+  Input,
   Menu,
   MenuProps,
   Space,
@@ -13,6 +14,8 @@ import { menuItem } from "../config";
 import { useNavigate } from "react-router-dom";
 import { routesConfig } from "../routes/routes";
 import {
+  InfoCircleOutlined,
+  SearchOutlined,
   ShoppingCartOutlined,
   UserOutlined,
 } from "@ant-design/icons";
@@ -109,11 +112,24 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ setLoading }) => {
 
   return (
     <div className="header-layout">
+     <div style={{ backgroundColor: "var(--color-red-primary)", padding: "5px 0", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <span style={{ color: "white", marginLeft: "20px",fontWeight:"bold", }} className="small-text">NƯỚC HOA & MỸ PHẨM CHÍNH HÃNG TỪ 2004</span>
+        <div style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
+          <div style={{ backgroundColor: "white", borderRadius: "5px", padding: "5px 10px", display: "flex", alignItems: "center" }}>
+            <SearchOutlined style={{ marginRight: "5px" }} />
+            <Input type="text" placeholder="Tìm kiếm nước hoa của bạn ..." style={{ border: "none", outline: "none", height:"25px", width:"500px" }} />
+          </div>
+          <div style={{ display: "flex", alignItems: "center", marginLeft: "20px" }}>
+            <span style={{ color: "white", marginLeft: "20px", display:"flex", }} className="small-text"> <InfoCircleOutlined style={{marginRight:"5px"}} /> Giờ vàng tại Orchard |</span>
+            <span style={{ color: "white", marginLeft: "5px",display:"flex", }} className="small-text"> <ShoppingCartOutlined style={{marginRight:"5px"}} /> Tra cứu lịch sử mua hàng</span>
+          </div>
+        </div>
+      </div>
       <Header
         style={{
           display: "flex",
           alignItems: "center",
-          backgroundColor: "var(--color-primary-4) !important",
+          backgroundColor: "var(--white-color) !important",
         }}
       >
         <img
@@ -147,9 +163,9 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ setLoading }) => {
           {auth ? (
             <Dropdown menu={{ items }} trigger={["click"]}>
               <a onClick={(e) => e.preventDefault()}>
-                <Space style={{ color: "white" }}>
+                <Space style={{ color: "black" }} >
                   <Avatar icon={<UserOutlined />} />
-                  {user ? user.ten : "Username"}
+                  {user ? ( user.ten ? user.ten : "Người dùng") : "Người dùng"}
                 </Space>
               </a>
             </Dropdown>

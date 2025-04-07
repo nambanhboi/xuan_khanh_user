@@ -10,7 +10,7 @@ const { Content, Footer, Sider } = Layout;
 
 const MainLayout: React.FC<{
   children?: React.ReactNode;
-  breadcrumb: string[];
+  breadcrumb?: string[];
 }> = ({ children, breadcrumb }) => {
   const location = useLocation(); // Lấy thông tin route hiện tại
   const [loading, setLoading] = useState<boolean>(false);
@@ -25,11 +25,14 @@ const MainLayout: React.FC<{
       <Spin spinning={loading}>
         <HeaderLayout setLoading={setLoading}/>
         <Content style={{ padding: "0" }}>
-          <Breadcrumb style={{ margin: "16px 0" }}>
-            {breadcrumb.map((item) => {
+          {
+            breadcrumb ? <Breadcrumb style={{ margin: "16px 20px" }}>
+            {breadcrumb ? breadcrumb.map((item) => {
               return <Breadcrumb.Item>{item}</Breadcrumb.Item>;
-            })}
-          </Breadcrumb>
+            }) : null}
+          </Breadcrumb> : null
+          }
+          
           <div
             style={{
               backgroundColor: "#FFFFFF",
