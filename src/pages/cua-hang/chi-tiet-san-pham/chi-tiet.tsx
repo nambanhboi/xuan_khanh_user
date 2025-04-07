@@ -128,7 +128,7 @@ const ChiTietSanPham: React.FC = () => {
         );
       })
       .catch((err: any) => {
-        ShowToast("error", "Thông báo", "Lấy dữ liệu thất bại", 3);
+        ShowToast("error", "Thông báo", "Lấy dữ liệu thất bại 1", 3);
       });
   };
 
@@ -155,7 +155,7 @@ const ChiTietSanPham: React.FC = () => {
           ShowToast(
             "warning",
             "Thông báo",
-            "Bạn chưa chọn màu sắc sản phẩm",
+            "Bạn chưa chọn dung tích",
             3
           );
           return 0;
@@ -164,7 +164,7 @@ const ChiTietSanPham: React.FC = () => {
           ShowToast(
             "warning",
             "Thông báo",
-            "Bạn chưa chọn kích thước sản phẩm",
+            "Bạn chưa chọn loại nước hoa",
             3
           );
           return 0;
@@ -176,7 +176,7 @@ const ChiTietSanPham: React.FC = () => {
               ShowToast(
                 "warning",
                 "Thông báo",
-                "Bạn chưa chọn màu sắc sản phẩm",
+                "Bạn chưa chọn dung tích sản phẩm",
                 3
               );
               return 0;
@@ -188,7 +188,7 @@ const ChiTietSanPham: React.FC = () => {
               ShowToast(
                 "warning",
                 "Thông báo",
-                "Bạn chưa chọn kích thước sản phẩm",
+                "Bạn chưa chọn loại nước hoa sản phẩm",
                 3
               );
               return 0;
@@ -200,7 +200,6 @@ const ChiTietSanPham: React.FC = () => {
       let bienThePhuHop: SanPham | undefined;
 
       if (mau_sac && kich_thuoc) {
-        // Nếu cả màu sắc và kích thước đều được chọn, tìm biến thể phù hợp
         bienThePhuHop = dataDetail.find(
           (item: any) => item.mau_sac === mau_sac && item.size === kich_thuoc
         );
@@ -210,12 +209,10 @@ const ChiTietSanPham: React.FC = () => {
           (item: any) => item.mau_sac === mau_sac
         );
       } else if (kich_thuoc) {
-        // Nếu chỉ kích thước được chọn, tìm biến thể phù hợp theo kích thước
         bienThePhuHop = dataDetail.find(
           (item: any) => item.size === kich_thuoc
         );
       } else {
-        // Nếu không có màu sắc và kích thước nào được chọn, lấy biến thể đầu tiên
         bienThePhuHop = dataDetail[0];
       }
 
@@ -307,7 +304,8 @@ const ChiTietSanPham: React.FC = () => {
             ))}
           </Carousel>
         </Splitter.Panel>
-        <Splitter.Panel size={60} className="Splitter-ct-right">
+        
+        <Splitter.Panel size={35} resizable={false} className="Splitter-ct-right">
           <div className="thong-tin-san-pham">
             {/* Tên sản phẩm */}
             <Typography.Text className="ten-san-pham">
@@ -379,16 +377,16 @@ const ChiTietSanPham: React.FC = () => {
             </div>
 
             {/* Biến thể */}
-            <div style={{ width: "50%" }}>
+            <div style={{ width: "100%" }}>
               {dataDetail.length > 0
                 ? dataDetail[0].ls_phan_loai.length > 0
                   ? dataDetail[0].ls_phan_loai.map((item: any) => {
                       return (
                         <div>
                           <Typography.Text>
-                            {item.ten_phan_loai === "mau-sac"
-                              ? "Màu sắc"
-                              : "Kích Thước"}
+                            {item.ten_phan_loai === "dung-tich"
+                              ? "Dung tích"
+                              : "Loại"}
                           </Typography.Text>
                           <Radio.Group
                             block
@@ -412,7 +410,7 @@ const ChiTietSanPham: React.FC = () => {
             </div>
 
             <Typography.Text>Số lượng:</Typography.Text>
-            <div style={{ display: "flex", gap: 8, width: "50%" }}>
+            <div style={{ display: "flex", gap: 8, width: "100%" }}>
               {/* Số lượng */}
               <FormInputNumber
                 min={1}
@@ -438,7 +436,7 @@ const ChiTietSanPham: React.FC = () => {
             {/* button */}
             <Button
               key={"2"}
-              style={{ height: "34px", width: "50%" }}
+              style={{ height: "34px", width: "100%" }}
               onClick={() => handleThemGioHang("them-gio-hang")}
             >
               THÊM VÀO GIỎ HÀNG
@@ -446,11 +444,15 @@ const ChiTietSanPham: React.FC = () => {
 
             {/* Các phương thức thanh toán */}
             <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-              <Image width={"20%"} src="/images/stripe.png" />
-              <Image width={"20%"} src="/images/ZaloPay_Logo.png" />
-              <Image width={"20%"} src="/images/COD.jpg" />
+              <Image width={"30%"} src="/images/stripe.png" />
+              <Image width={"30%"} src="/images/ZaloPay_Logo.png" />
+              <Image width={"30%"} src="/images/COD.jpg" />
             </div>
           </div>
+        </Splitter.Panel>
+
+        <Splitter.Panel size={25}>
+
         </Splitter.Panel>
       </Splitter>
 

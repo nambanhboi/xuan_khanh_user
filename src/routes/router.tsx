@@ -37,6 +37,14 @@ export const router = createBrowserRouter([
     )
   },
   {
+    path: `${routesConfig.cuaHang}/:id`,
+    element: (
+      <MainLayout breadcrumb = {["Trang chủ", "Cửa hàng"]}>
+        <CuaHang />
+      </MainLayout>
+    )
+  },
+  {
     path: routesConfig.chiTietSanPham,
     element: (
       <MainLayout breadcrumb = {["Trang chủ", "Cửa hàng", "Chi tiết sản phẩm"]}>

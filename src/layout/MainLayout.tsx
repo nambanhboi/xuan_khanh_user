@@ -46,7 +46,7 @@ const MainLayout: React.FC<{
         </Content>
 
         <Footer style={{ textAlign: "center" }}>
-        G-Connect ©{new Date().getFullYear()} Created by Lâm Vũ
+        DK ©{new Date().getFullYear()} Created by Dương Xuân Khánh
         </Footer>
       </Spin>
     </Layout>

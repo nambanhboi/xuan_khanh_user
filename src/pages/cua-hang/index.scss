@@ -1,50 +1,61 @@
-.ds-san-pham{
-    .Splitter-left{
-        padding: 24px;
-        .Splitter-left-content{
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-    }
-
-    .Splitter-right{
-        padding: 24px;
-        .Splitter-right-content{
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-    }
-    .ant-card{
-        cursor: pointer;
-        .ant-card-body{
-            padding: 8px 5px; 
-        }
-        .ant-card-actions:hover{
-            background-color: var(--color-primary-3);
-            .cart-icon{
-                color: var(--color-primary-9) !important;
-            }
-        }
-    }
-    
-    .mo-ta-san-pham{
+.ds-san-pham {
+    .Splitter-left {
+      padding: 24px;
+      .Splitter-left-content {
         display: flex;
         flex-direction: column;
-        // align-items: center ;
-        .ten-san-pham{
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .gia-san-pham{
-            font-size: 16px;
-            color: #999999;
-        }
+        gap: 16px;
+      }
     }
+  
+    .Splitter-right {
+      padding: 24px;
+      .Splitter-right-content {
+        display: flex; // Thay đổi từ grid sang flex
+        flex-wrap: wrap; // Cho phép các card xuống dòng khi không đủ chỗ
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+    }
+  
+    .ant-card {
+      
+      cursor: pointer;
+      width: 250px; // Đặt chiều rộng cố định cho mỗi card
+      height: 100%; /* Đảm bảo nội dung chiếm toàn bộ chiều cao */
+      margin: 8px; // Thêm margin để có khoảng cách giữa các card
+      border: 1px solid rgb(214, 214, 214); // Thêm border cho card
+      .ant-card-body {
+        padding: 8px 5px; 
+      }
+      .ant-card-actions:hover {
+        background-color: var(--color-primary-3);
+        .cart-icon {
+          color: var(--color-primary-9) !important;
+        }
+      }
+    }
+  
+    .mo-ta-san-pham {
+      display: flex;
+      flex-direction: column;
+      .ten-san-pham {
+        font-size: 16px; // Giảm kích thước font để phù hợp với ảnh
+        font-weight: bold;
+      }
+      .ten-danh-muc {
+        font-size: 12px !important; // Giảm kích thước font
+        font-style: italic;
+        font-weight: 500;
 
-    .Title{
-        margin: 0 0 10px 0;
+      }
+      .gia-san-pham {
+        font-size: 14px; // Giảm kích thước font
+        color: #999999;
+      }
     }
-}
+  
+    .Title {
+      margin: 0 0 10px 0;
+    }
+  }

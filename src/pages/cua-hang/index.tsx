@@ -1,12 +1,17 @@
 import {
   Avatar,
+  Badge,
+  Button,
   Card,
   Image,
   Pagination,
   PaginationProps,
+  Radio,
+  Select,
   Slider,
   Spin,
   Splitter,
+  Tag,
   Typography,
 } from "antd";
 import React, { useEffect, useState } from "react";
@@ -27,7 +32,7 @@ import FormSelect from "../../components/form-select/FormSelect";
 import { SliderSingleProps } from "antd/lib";
 import { SliderRangeProps } from "antd/es/slider";
 import ButtonCustom from "../../components/button/button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import GroupLabel from "../../components/group-label";
 
 const CuaHang: React.FC = () => {
@@ -41,6 +46,7 @@ const CuaHang: React.FC = () => {
   const [danh_muc, set_danh_muc] = useState<string | null>(null);
   const [tu_khoa, set_tu_khoa] = useState<string | string[] | undefined>();
   const navigate = useNavigate();
+  const { id } = useParams<{ id: string }>();
 
   //phân trang
   const onChange: PaginationProps["onChange"] = (page) => {
@@ -54,6 +60,7 @@ const CuaHang: React.FC = () => {
         params: {
           pageSize: pageSize,
           pageNumber: pageIndex,
+          danh_muc_id: id ? id : null,
         },
       })
       .then((res: any) => {
@@ -66,7 +73,7 @@ const CuaHang: React.FC = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, [pageIndex]);
+  }, [pageIndex, id]);
 
   const handleSearch = () => {
     setLoading(true);
@@ -94,9 +101,12 @@ const CuaHang: React.FC = () => {
       });
   };
 
-  const handleClickProduct = (item:any) => {
-    navigate(`/chi-tiet-san-pham/${item.ma_san_pham}`)
-  }
+  useEffect(() => {
+    handleSearch();
+  }, [khoang_tien]);
+  const handleClickProduct = (item: any) => {
+    navigate(`/chi-tiet-san-pham/${item.ma_san_pham}`);
+  };
 
   const formatter: NonNullable<SliderRangeProps["tooltip"]>["formatter"] = (
     value
@@ -106,10 +116,13 @@ const CuaHang: React.FC = () => {
     <div className="ds-san-pham">
       <Spin spinning={loading}>
         <Splitter
-          style={{ boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", minHeight:"75vh" }}
+          style={{
+            boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+            minHeight: "75vh",
+          }}
           onResize={setSizes}
         >
-          <Splitter.Panel
+          {/* <Splitter.Panel
             collapsible
             size={sizes[0]}
             resizable={false}
@@ -120,7 +133,6 @@ const CuaHang: React.FC = () => {
                 <FilterOutlined /> Lọc sản phẩm
               </Typography.Title>
 
-              {/* tìm kiếm bằng từ khóa */}
               <FormItemInput
                 label="Tìm kiếm"
                 placeholder="Nhập từ khóa"
@@ -130,7 +142,6 @@ const CuaHang: React.FC = () => {
                 }}
               />
 
-              {/* trạng thái */}
               <FormSelect
                 selectType="selectApi"
                 label={"Danh mục"}
@@ -142,7 +153,6 @@ const CuaHang: React.FC = () => {
                 onChange={set_danh_muc}
               />
 
-              {/* khoảng tiền */}
               <div>
                 <Typography.Text style={{ fontSize: "16px" }}>
                   Giá
@@ -158,21 +168,111 @@ const CuaHang: React.FC = () => {
                 />
               </div>
 
-              {/* button */}
               <ButtonCustom text="Tìm kiếm" onClick={handleSearch} />
             </div>
-          </Splitter.Panel>
+          </Splitter.Panel> */}
 
           <Splitter.Panel size={sizes[1]} className="Splitter-right">
             <Typography.Title level={3} className="Title">
-              <GroupLabel label="Kết quả tìm kiếm"/>
+              <GroupLabel label="Kết quả tìm kiếm" />
             </Typography.Title>
+            <div
+              className="filter-selects"
+              style={{ display: "flex", gap: "10px", padding: "8px 15px" }}
+            >
+              <Radio.Group
+                onChange={(e: any) => {
+                  const value = e.target.value;
+                  if (value === "duoi-2-trieu") {
+                    set_khoang_tien([0, 2000000]);
+                  } else if (value === "2-4-trieu") {
+                    set_khoang_tien([2000000, 4000000]);
+                  } else if (value === "tren-4-trieu") {
+                    set_khoang_tien([4000000, 10000000]);
+                  }
+                }}
+                optionType="button"
+                buttonStyle="solid"
+              >
+                <Radio.Button value="duoi-2-trieu">DƯỚI 2 TRIỆU</Radio.Button>
+                <Radio.Button value="2-4-trieu">2 - 4 TRIỆU</Radio.Button>
+                <Radio.Button value="tren-4-trieu">TRÊN 4 TRIỆU</Radio.Button>
+              </Radio.Group>
+            </div>
             <div className="Splitter-right-content">
               {ProductsData.map((item: any) => {
-                return (
+                return item.khuyen_mai ? (
+                  <Badge.Ribbon
+                    text="SALE"
+                    style={{ marginTop: "10px" }}
+                    color="red"
+                  >
+                    <Card
+                      hoverable
+                      onClick={() => handleClickProduct(item)}
+                      style={{
+                        width: 250,
+                        border: "1px solid rgb(214, 214, 214)",
+                      }}
+                      cover={
+                        <Image
+                          preview={false}
+                          alt="example"
+                          style={{ border: "1px solid rgb(214, 214, 214)" }}
+                          src={`${BASE_URL}/${item.duongDanAnh}`}
+                        />
+                      }
+                      // actions={[
+                      //   <ShoppingCartOutlined key="cart" className="cart-icon" />,
+                      // ]}
+                    >
+                      <div className="mo-ta-san-pham">
+                        <Typography.Text className="ten-san-pham">
+                          <Tag color="red" className="ten-danh-muc">
+                            {item.ten_danh_muc}
+                          </Tag>
+                          {item.ten_san_pham}
+                        </Typography.Text>
+
+                        <div>
+                          {item.khuyen_mai ? (
+                            <Typography.Text delete className="gia-san-pham">
+                              {item.gia.toLocaleString("vi-VN", {
+                                style: "currency",
+                                currency: "VND",
+                              })}{" "}
+                              <span></span>
+                            </Typography.Text>
+                          ) : (
+                            <Typography.Text className="gia-san-pham">
+                              {item.gia.toLocaleString("vi-VN", {
+                                style: "currency",
+                                currency: "VND",
+                              })}
+                            </Typography.Text>
+                          )}
+                          {item.khuyen_mai ? (
+                            <Typography.Text
+                              className="khuyen-mai"
+                              style={{ marginLeft: "5px" }}
+                            >
+                              {item.khuyen_mai.toLocaleString("vi-VN", {
+                                style: "currency",
+                                currency: "VND",
+                              })}
+                            </Typography.Text>
+                          ) : (
+                            ""
+                          )}
+                        </div>
+                      </div>
+                    </Card>
+                  </Badge.Ribbon>
+                ) : (
+                  <div>
                   <Card
                     hoverable
-                    onClick={()=> handleClickProduct(item)}
+                    onClick={() => handleClickProduct(item)}
                     style={{
                       width: 250,
                       border: "1px solid rgb(214, 214, 214)",
@@ -185,17 +285,18 @@ const CuaHang: React.FC = () => {
                         src={`${BASE_URL}/${item.duongDanAnh}`}
                       />
                     }
-                    actions={[
-                      <ShoppingCartOutlined key="cart" className="cart-icon" />,
-                    ]}
+                    // actions={[
+                    //   <ShoppingCartOutlined key="cart" className="cart-icon" />,
+                    // ]}
                   >
                     <div className="mo-ta-san-pham">
                       <Typography.Text className="ten-san-pham">
+                        <Tag color="red" className="ten-danh-muc">
+                          {item.ten_danh_muc}
+                        </Tag>
                         {item.ten_san_pham}
                       </Typography.Text>
-                      <Typography.Text keyboard className="ten-danh-muc">
-                        {item.ten_danh_muc}
-                      </Typography.Text>
+
                       <div>
                         {item.khuyen_mai ? (
                           <Typography.Text delete className="gia-san-pham">
@@ -229,6 +330,7 @@ const CuaHang: React.FC = () => {
                       </div>
                     </div>
                   </Card>
+                  </div>
                 );
               })}
             </div>
