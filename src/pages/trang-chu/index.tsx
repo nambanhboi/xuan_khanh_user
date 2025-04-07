@@ -213,39 +213,22 @@ const TrangChu: React.FC = () => {
                 </div>
 
             {/* Danh mục nổi bật */}
-            <section style={{ padding: "60px 20px", background: "#f9f9f9" }}>
-            <Title level={2} style={{ textAlign: "center", marginBottom: "40px" }}>Danh mục nước hoa</Title>
-            <Row gutter={[24, 24]} justify="center">
-                {["Nữ", "Nam", "Unisex"].map((category, index) => (
-                <Col xs={24} sm={12} md={8} key={index}>
-                    <div 
-                    style={{
-                        position: "relative", 
-                        height: "300px", 
-                        background: `url(/images/category_${category.toLowerCase()}.jpg)`, 
-                        backgroundSize: "cover", 
-                        borderRadius: "10px", 
-                        overflow: "hidden",
-                        cursor: "pointer"
-                    }}
-                    onClick={() => handleCategoryClick(category)}
+            <section style={{ padding: "50px 20px", backgroundColor: "#fdfdfd" }}>
+                <Title level={2} style={{ textAlign: "center", marginBottom: "40px" }}>Danh mục nổi bật</Title>
+                <Row gutter={[24, 24]} justify="center">
+                {["Nữ", "Nam", "Unisex"].map((name, idx) => (
+                    <Col xs={24} sm={12} md={8} key={idx}>
+                    <Card
+                        hoverable
+                        cover={<img src={`/images/category_${name.toLowerCase()}.png`} alt={name} style={{ height: 240, objectFit: "cover" }} />}
+                        onClick={() => handleCategoryClick(name)}
+                        style={{ borderRadius: "12px", overflow: "hidden" }}
                     >
-                    <div style={{
-                        position: "absolute", 
-                        top: "50%", 
-                        left: "50%", 
-                        transform: "translate(-50%, -50%)", 
-                        color: "#fff", 
-                        fontSize: "24px", 
-                        fontWeight: "bold", 
-                        textShadow: "0 2px 4px rgba(0,0,0,0.5)"
-                    }}>
-                        Nước hoa {category}
-                    </div>
-                    </div>
-                </Col>
+                        <Meta title={`Nước hoa ${name}`} style={{ textAlign: "center" }} />
+                    </Card>
+                    </Col>
                 ))}
-            </Row>
+                </Row>
             </section>
 
             {/* Sản phẩm nổi bật */}
@@ -284,7 +267,7 @@ const TrangChu: React.FC = () => {
             <Row gutter={[40, 40]} align="middle">
                 <Col xs={24} md={12}>
                 <img 
-                    src="/images/brand_story.jpg" 
+                    src="/images/brand_story.webp" 
                     alt="Câu chuyện thương hiệu" 
                     style={{ width: "100%", borderRadius: "10px" }} 
                 />
@@ -306,10 +289,10 @@ const TrangChu: React.FC = () => {
             <Title level={2} style={{ textAlign: "center", marginBottom: "40px" }}>Câu hỏi thường gặp</Title>
             <Collapse 
                 bordered={false} 
-                style={{ maxWidth: "800px", margin: "0 auto", background: "transparent" }}
+                style={{ margin: "0 auto", background: "transparent" }}
             >
                 {faqData.slice(0, 3).map((faq, index) => (
-                <Panel header={faq.question} key={index} style={{ fontSize: "16px" }}>
+                <Panel header={faq.question} key={index} style={{ fontSize: "16px" }} >
                     <p>{faq.answer}</p>
                 </Panel>
                 ))}
