@@ -259,6 +259,30 @@ const ChiTietSanPham: React.FC = () => {
     }
   };
 
+  const huongNuocHoa = [
+    { ten: 'cam chanh', mau: '#FFFF00' },
+    { ten: 'hổ phách', mau: '#D2691E' },
+    { ten: 'gỗ thơm', mau: '#A0522D' },
+    { ten: 'cay ẩm', mau: '#20B2AA' },
+    { ten: 'thảo mộc', mau: '#90EE90' },
+    { ten: 'the mát', mau: '#00CED1' },
+    { ten: 'khói', mau: '#D8BFD8' },
+    { ten: 'nhựa thơm', mau: '#FFB6C1' },
+    { ten: 'tươi mát', mau: '#AFEEEE' },
+    { ten: 'tươi xanh', mau: '#98FB98' },
+  ];
+
+  const thongTin = [
+    { ten: 'Đông', mau: '#87CEEB', bieuTuong: '❄️' },
+    { ten: 'Xuân', mau: '#90EE90', bieuTuong: '🎶' },
+    { ten: 'Hè', mau: '#FA8072', bieuTuong: '☂️' },
+    { ten: 'Thu', mau: '#FFA500', bieuTuong: '🍂' },
+    { ten: 'Ngày', mau: '#FFD700', mauChu: 'black', bieuTuong: '☀️' },
+    { ten: 'Đêm', mau: '#4682B4', bieuTuong: '' },
+    { ten: 'Lưu đến 6h', mau: 'white', mauChu: 'black', bieuTuong: '⏱️' },
+    { ten: 'Toả ~1 mét', mau: 'white', mauChu: 'black', bieuTuong: '' },
+  ];
+
   return (
     <div className="chi-tiet-san-pham">
       <Splitter
@@ -452,7 +476,51 @@ const ChiTietSanPham: React.FC = () => {
         </Splitter.Panel>
 
         <Splitter.Panel size={25}>
-
+        <div style={{  padding: '20px',  }}>
+      <img
+        src="/images/logo.jpg"
+        alt="Chanel Logo"
+        style={{ width: '50%', marginLeft: '25%' }}
+      />
+      <Typography.Title level={5}>MÙI HƯƠNG CHÍNH (ACCORDS)</Typography.Title>
+      <Typography.Text style={{ fontSize: '12px', marginBottom: '10px' }}>
+      </Typography.Text>
+      {huongNuocHoa.map((huong, index) => (
+        <div key={index} style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}>
+          <div
+            style={{
+              width: `${(index + 1) * 20}px`,
+              height: '20px',
+              backgroundColor: huong.mau,
+              marginRight: '10px',
+            }}
+          />
+          <Typography.Text>{huong.ten}</Typography.Text>
+        </div>
+      ))}
+    </div>
+    <div style={{ padding: '20px', display: 'flex', flexWrap: 'wrap', gap: '10px', border: '1px solid #ccc', borderRadius: '8px', margin: '25px' }}>
+      {thongTin.map((item, index) => (
+        <div key={index} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+          <div
+            style={{
+              width: '30px',
+              height: '30px',
+              borderRadius: '50%',
+              backgroundColor: item.mau,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginRight: '10px',
+              color: item.mauChu || 'white',
+            }}
+          >
+            <span style={{ fontSize: '1.5em' }}>{item.bieuTuong}</span>
+          </div>
+          <Typography.Text style={{ fontWeight: 'bold' }}>{item.ten}</Typography.Text>
+        </div>
+      ))}
+    </div>
         </Splitter.Panel>
       </Splitter>
 

@@ -347,6 +347,10 @@ const GioHang: React.FC = () => {
                 </Typography.Text>
                 <Button
                   onClick={() => {
+                    if(selectedRows.length === 0) {
+                      ShowToast("warning", "Thông báo", "Vui lòng chọn sản phẩm để thanh toán", 3);
+                      return;
+                    }
                     navigate(routesConfig.thanhToan, { state: selectedRows });
                   }}
                 >
