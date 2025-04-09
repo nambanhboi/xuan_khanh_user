@@ -29,8 +29,8 @@ interface CustomJwtPayload extends JwtPayload {
 
 interface SanPham {
   id: string;
-  mau_sac?: string;
-  size?: string;
+  dung_tich?: string;
+  loai_nuoc_hoa?: string;
   ds_anh_san_pham: string[];
   ma_san_pham: string;
   ls_phan_loai: any[];
@@ -137,10 +137,10 @@ const ChiTietSanPham: React.FC = () => {
   };
 
   const handleChangeBienThe = (items: any, selected: any) => {
-    if (items.ten_phan_loai === "mau-sac") {
+    if (items.ten_phan_loai === "dung-tich") {
       set_mau_sac(selected);
     }
-    if (items.ten_phan_loai === "size") {
+    if (items.ten_phan_loai === "loai-nuoc-hoa") {
       set_kich_thuoc(selected);
     }
   };
@@ -171,7 +171,7 @@ const ChiTietSanPham: React.FC = () => {
         }
       } else {
         if (pl.length === 1) {
-          if (pl[0].ten_phan_loai === "mau-sac") {
+          if (pl[0].ten_phan_loai === "dung-tich") {
             if (mau_sac === null || mau_sac === undefined) {
               ShowToast(
                 "warning",
@@ -183,7 +183,7 @@ const ChiTietSanPham: React.FC = () => {
             }
           }
 
-          if (pl[0].ten_phan_loai === "size") {
+          if (pl[0].ten_phan_loai === "loai-nuoc-hoa") {
             if (kich_thuoc === null || kich_thuoc === undefined) {
               ShowToast(
                 "warning",
@@ -201,16 +201,16 @@ const ChiTietSanPham: React.FC = () => {
 
       if (mau_sac && kich_thuoc) {
         bienThePhuHop = dataDetail.find(
-          (item: any) => item.mau_sac === mau_sac && item.size === kich_thuoc
+          (item: any) => item.dung_tich === mau_sac && item.loai_nuoc_hoa === kich_thuoc
         );
       } else if (mau_sac) {
         // Nếu chỉ màu sắc được chọn, tìm biến thể phù hợp theo màu sắc
         bienThePhuHop = dataDetail.find(
-          (item: any) => item.mau_sac === mau_sac
+          (item: any) => item.dung_tich === mau_sac
         );
       } else if (kich_thuoc) {
         bienThePhuHop = dataDetail.find(
-          (item: any) => item.size === kich_thuoc
+          (item: any) => item.loai_nuoc_hoa === kich_thuoc
         );
       } else {
         bienThePhuHop = dataDetail[0];
